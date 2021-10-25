@@ -24,15 +24,14 @@ export class Hover {
     public turnRight(): void {
         this.angle += 90
         this.updateHeading();
-        this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
+        // this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
     }
     public turnLeft(): void {
         this.angle -= 90
         this.updateHeading();
-        this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
+        // this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
     }
     public move(): void {
-        console.log(this)
 
         switch (this.currentHeading) {
             case 'S':
@@ -68,7 +67,6 @@ export class Hover {
         this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
     }
     private updateHeading(): void {
-        console.log('angle - updatingHeading', this.angle)
         if (this.angle % 360 === 90 || this.angle % 360 === -270) {
             this.currentHeading = 'S'
         }
