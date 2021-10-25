@@ -31,37 +31,37 @@ export class Hover {
         this.updateHeading();
         // this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
     }
-    public move(): void {
+    public move(): Error | void {
 
         switch (this.currentHeading) {
             case 'S':
                 this.currentPosition.y -= 1;
                 if (this.currentPosition.y < 0) {
-                    throw new Error('Out of bounds !')
+                    return new Error('Out of bounds !')
                 }
                 break;
             case 'W':
                 this.currentPosition.x -= 1;
                 if (this.currentPosition.x < 0) {
-                    throw new Error('Out of bounds !')
+                    return new Error('Out of bounds !')
                 }
                 break;
             case 'N':
                 this.currentPosition.y += 1
                 if (this.currentPosition.y > this.limit.y) {
-                    throw new Error('Out of bounds !')
+                    return new Error('Out of bounds !')
                 }
                 break;
             case 'E':
                 this.currentPosition.x += 1;
                 if (this.currentPosition.x > this.limit.x) {
-                    throw new Error('Out of bounds !')
+                    return new Error('Out of bounds !')
                 }
                 break;
             default:
                 this.currentPosition.x = -9999999
                 this.currentPosition.y = -9999999
-                throw new Error('Something went wrong while moving.')
+                return new Error('Something went wrong while moving.')
 
         }
         this.history.push({ x: this.currentPosition.x, y: this.currentPosition.y, heading: this.currentHeading })
